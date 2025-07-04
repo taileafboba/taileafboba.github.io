@@ -945,4 +945,41 @@
             const animatedElements = document.querySelectorAll('.menu-card, .contact-item');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
-                el.style.transform
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+
+            // Handle orientation changes
+            window.addEventListener('orientationchange', function() {
+                setTimeout(function() {
+                    window.scrollTo(0, 0);
+                }, 100);
+            });
+
+            // Add touch event handling for better mobile interaction
+            let touchStartY = 0;
+            let touchEndY = 0;
+
+            document.addEventListener('touchstart', function(e) {
+                touchStartY = e.changedTouches[0].screenY;
+            });
+
+            document.addEventListener('touchend', function(e) {
+                touchEndY = e.changedTouches[0].screenY;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartY - touchEndY;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    // Optional: Add swipe navigation between tabs
+                    // This is just preparation for future enhancement
+                }
+            }
+        });
+    </script>
+</body>
+</html>
