@@ -173,6 +173,65 @@
             .menu-section-container, .menu-pricing-box, .menu-drink-row, .menu-toppings-row { flex-direction: column; }
             .menu-drink-section, .menu-toppings-section { margin: 0 auto; }
         }
+
+        /* --- Mobile centering for images --- */
+        @media (max-width: 900px) {
+            /* Home section - center logo image */
+            .hero-image {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .hero-image img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            /* About section - center about image */
+            .about-icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .about-icon img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                height: auto;
+            }
+            /* Contact section - center contact image */
+            .contact-visual {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 100%;
+            }
+            .contact-visual img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                height: auto;
+            }
+            /* Events section - center event images */
+            .event-card p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .event-card img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 100%;
+                height: auto;
+            }
+        }
+        /* --- End mobile centering --- */
+
         main { margin-top: 80px; min-height: calc(100vh - 80px); position: relative; }
         .tab-content {
             display: none;
