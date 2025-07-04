@@ -384,6 +384,67 @@
             opacity: 0.3;
         }
 
+        /*Events Section*/
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7B9A6D, #E8B55A);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #E8B55A;
+        }
+
+        .event-card h3 {
+            font-size: 1.5rem;
+            color: #7B9A6D;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .event-card .price {
+            font-size: 1.2rem;
+            color: #E8B55A;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .event-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
             .nav-links {
@@ -521,6 +582,7 @@
                 <li><a href="#" class="nav-link" data-tab="about">About Us</a></li>
                 <li><a href="#" class="nav-link" data-tab="menu">Menu</a></li>
                 <li><a href="#" class="nav-link" data-tab="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-tab="events">Events</a></li>
             </ul>
         </nav>
     </header>
@@ -621,6 +683,39 @@
                 <div class="contact-visual">🗺️</div>
             </div>
         </section>
+    
+
+        <!-- Events Tab -->
+        <section id="events" class="tab-content">
+            <div class="event-grid">
+                <div class="event-card">
+                    <h3>Launch Party</h3>
+                    <div class="price">anish's house idk the addy</div>
+                    <p> 
+                        <img src="launch_day.jpeg" alt="Launch Day" width="600px" height="400px">
+                    </p>
+                </div>
+                <div class="event-card">
+                    <h3>Grad Party</h3>
+                    <div class="price">Byers Station Clubhouse</div>
+                </div>
+                <div class="event-card">
+                    <h3>Upper Uwchlan Block Party</h3>
+                    <div class="price">Chester Springs, PA</div>
+                </div>
+                <div class="event-card">
+                    <h3>Grad Party #2</h3>
+                    <div class="price">still dont know the addy</div>
+                </div>
+                <div class="event-card">
+                    <h3>Grad Party #3</h3>
+                    <div class="price">still dont know the addy</div>
+                </div>
+                
+
+
+
+            </section>
     </main>
 
     <script>
