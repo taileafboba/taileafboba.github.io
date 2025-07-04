@@ -41,6 +41,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            position: relative;
         }
 
         .logo {
@@ -53,7 +54,6 @@
         }
 
         .logo::after {
-            /*content:;*/
             margin-left: 0.5rem;
             animation: bounce 2s infinite;
         }
@@ -106,6 +106,17 @@
             transform: translateY(-2px);
         }
 
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #7B9A6D;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
         /* Main Content */
         main {
             margin-top: 80px;
@@ -155,18 +166,15 @@
         }
 
         .hero-image {
-            /*width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #7B9A6D, #E8B55A);
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);*/
             animation: float 3s ease-in-out infinite;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         .hero h1 {
@@ -252,17 +260,17 @@
             margin-bottom: 1.5rem;
         }
 
-        .about-icon {
-            font-size: 15rem;
-            color: #7B9A6D;
-            text-align: center;
-            animation: pulse 10s infinite;
+        .about-icon img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         /* Menu Section */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             padding: 2rem 0;
         }
@@ -375,16 +383,14 @@
             color: #666;
         }
 
-        .contact-visual {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12rem;
-            color: #7B9A6D;
+        .contact-visual img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /*Events Section*/
-
+        /* Events Section */
         .event-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -444,43 +450,170 @@
             line-height: 1.6;
         }
 
+        .event-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-top: 1rem;
+        }
+
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: block;
+            }
+
             .nav-links {
+                position: fixed;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
                 gap: 1rem;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: all 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.mobile-active {
+                transform: translateY(0);
+                opacity: 1;
             }
 
             .nav-links a {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.9rem;
+                padding: 1rem;
+                text-align: center;
+                font-size: 1.1rem;
+                width: 100%;
+                border-radius: 15px;
+            }
+
+            nav {
+                padding: 0 1rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .tab-content {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+                margin: 1rem 0;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
 
-            .hero-image {
-                width: 200px;
-                height: 200px;
-                font-size: 3rem;
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-image img {
+                max-width: 200px;
             }
 
             .about-content,
             .contact-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
+                padding: 2rem 1rem;
             }
 
-            .about-icon {
-                font-size: 8rem;
+            .about-text h2,
+            .contact-info h2 {
+                font-size: 2rem;
+            }
+
+            .about-text p {
+                font-size: 1rem;
             }
 
             .menu-grid {
                 grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            nav {
-                padding: 0 1rem;
+            .menu-card {
+                padding: 1.5rem;
+            }
+
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+
+            .contact-item .icon {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+
+            .event-card {
+                padding: 1.5rem;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.5rem;
+            }
+
+            /* Touch-friendly spacing */
+            .nav-links a,
+            .cta-button,
+            .contact-item {
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* Small mobile devices */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .about-text h2,
+            .contact-info h2 {
+                font-size: 1.8rem;
+            }
+
+            .menu-card h3,
+            .event-card h3 {
+                font-size: 1.3rem;
+            }
+
+            .tab-content {
+                padding: 0.5rem;
+            }
+
+            .hero {
+                padding: 2rem 1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                padding: 1.5rem 1rem;
+            }
+
+            .menu-card,
+            .event-card {
+                padding: 1rem;
             }
         }
 
@@ -576,6 +709,7 @@
     <header>
         <nav>
             <a href="#" class="logo">Tai Leaf Boba🧋</a>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
             <ul class="nav-links">
                 <li><a href="#" class="nav-link active" data-tab="home">Home</a></li>
                 <li><a href="#" class="nav-link" data-tab="about">About Us</a></li>
@@ -590,7 +724,9 @@
         <!-- Home Tab -->
         <section id="home" class="tab-content active">
             <div class="hero">
-                <div class="hero-image"><img src="tlblogo.png" alt="Tai Leaf Boba" height="250px" width="275px"></div>
+                <div class="hero-image">
+                    <img src="tlblogo.png" alt="Tai Leaf Boba" width="275" height="250">
+                </div>
                 <h1>Welcome to Tai Leaf Boba!</h1>
                 <p>Discover the perfect blend of traditional tea culture and modern boba innovation. Every cup tells a story of quality, comfort, and community.</p>
                 <a href="#" class="cta-button" onclick="switchTab('menu')">Explore Our Menu</a>
@@ -605,7 +741,9 @@
                     <p>At Tai Leaf Boba Tea, we believe that every cup should be a moment of joy and connection. Founded with a passion for authentic flavors and sustainable practices, we source our ingredients from local farms and craft each drink with care.</p>
                     <p>Our cozy atmosphere invites you to slow down, savor the moment, and enjoy the perfect balance of traditional tea culture with modern boba innovation. From our signature house blends to seasonal specialties, every sip is crafted to bring comfort and delight to your day.</p>
                 </div>
-                <div class="about-icon"><img src="aboutus.jpg" alt="Tai Leaf Boba" width="625px" height="750px"></div>
+                <div class="about-icon">
+                    <img src="aboutus.jpg" alt="About Tai Leaf Boba" width="625" height="750">
+                </div>
             </div>
         </section>
 
@@ -672,10 +810,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="contact-visual"><img src="contactus.jpg" width="550px" height="600px" ></div>
+                <div class="contact-visual">
+                    <img src="contactus.jpg" alt="Contact Us" width="550" height="600">
+                </div>
             </div>
         </section>
-    
 
         <!-- Events Tab -->
         <section id="events" class="tab-content">
@@ -683,7 +822,7 @@
                 <div class="event-card">
                     <h3>Launch Party</h3>
                     <div class="price">anish's house idk the addy</div>
-                    <p> 
+                    <p>
                         <img src="launch_day.jpeg" alt="Launch Day">
                     </p>
                 </div>
@@ -715,11 +854,8 @@
                         <img src="grad_party_3.jpeg" alt="Grad Party 3">
                     </p>
                 </div>
-                
-
-
-
-            </section>
+            </div>
+        </section>
     </main>
 
     <script>
@@ -744,6 +880,16 @@
 
             // Add active class to clicked nav link
             document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+            // Close mobile menu after selection
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.remove('mobile-active');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile-active');
         }
 
         // Navigation click handlers
@@ -756,6 +902,16 @@
                     const tabName = this.getAttribute('data-tab');
                     switchTab(tabName);
                 });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(e) {
+                const nav = document.querySelector('nav');
+                const mobileMenu = document.querySelector('.nav-links');
+                
+                if (!nav.contains(e.target) && mobileMenu.classList.contains('mobile-active')) {
+                    mobileMenu.classList.remove('mobile-active');
+                }
             });
 
             // Add scroll effect to header
@@ -789,17 +945,4 @@
             const animatedElements = document.querySelectorAll('.menu-card, .contact-item');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
-                el.style.transform = 'translateY(20px)';
-                el.style.transition = 'all 0.6s ease';
-                observer.observe(el);
-            });
-        });
-
-        // Mobile menu toggle (if needed for smaller screens)
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.classList.toggle('mobile-active');
-        }
-    </script>
-</body>
-</html>
+                el.style.transform
