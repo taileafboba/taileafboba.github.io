@@ -30,6 +30,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 0 2rem;
+            position: relative;
         }
         .logo {
             font-size: 1.8rem;
@@ -44,6 +45,7 @@
             list-style: none;
             gap: 2rem;
             animation: slideInRight 0.8s ease-out;
+            transition: all 0.3s ease;
         }
         .nav-links li { position: relative; }
         .nav-links a {
@@ -85,17 +87,7 @@
             color: white;
             transform: translateY(-2px);
         }
-        .nav-links.mobile-active {
-            flex-direction: column;
-            position: absolute;
-            top: 70px; right: 15px;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(123,154,109,0.15);
-            padding: 1rem 2rem;
-            gap: 1rem;
-            z-index: 2000;
-        }
+        /* Hamburger & Dropdown Styles */
         .mobile-nav-toggle {
             display: none;
             flex-direction: column;
@@ -130,6 +122,18 @@
             .mobile-nav-toggle { display: flex; }
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 65px;
+                right: 15px;
+                flex-direction: column;
+                background: #fff;
+                border-radius: 15px;
+                box-shadow: 0 8px 25px rgba(123,154,109,0.15);
+                padding: 1rem 2rem;
+                gap: 1rem;
+                z-index: 2000;
+                min-width: 180px;
+                animation: fadeInUp 0.4s;
             }
             .nav-links.mobile-active {
                 display: flex;
@@ -149,171 +153,87 @@
             }
         }
 
-        /* --- MENU REFORMAT MOBILE ONLY --- */
+        /* --- Mobile image and text layout improvements --- */
         @media (max-width: 900px) {
-            #menu .menu-section-container {
+            /* Home section - logo image (crop circle, better spacing) */
+            .hero-image {
                 display: flex;
-                flex-direction: column;
-                gap: 1.1rem;
+                justify-content: center;
                 align-items: center;
-                padding: 0.5rem 0.1rem 1.5rem 0.1rem;
+                margin: 0 auto 1.1rem auto;
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                overflow: hidden;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.09);
+                background: #fff;
             }
-            .menu-price-mainbox {
-                background: linear-gradient(90deg, #fff, #e8b55a1a 90%);
-                border-radius: 18px;
-                box-shadow: 0 8px 25px rgba(123,154,109,0.09);
-                border: 2px solid #e8b55a44;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                width: 97vw;
-                max-width: 400px;
-                margin-bottom: 0.3rem;
-                padding: 1.2rem 1rem;
-            }
-            .menu-price-mainbox .menu-price-label {
-                font-size: 1.18rem;
-                color: #7B9A6D;
-                font-weight: 700;
-                padding-right: 0.6rem;
-            }
-            .menu-price-mainbox .menu-price-value {
-                font-size: 1.1rem;
-                color: #E8B55A;
-                font-weight: 800;
-                margin-left: 0.6rem;
-            }
-            .menu-drink-sections-mobile {
-                display: flex;
-                width: 97vw;
-                max-width: 400px;
-                gap: 0.8rem;
-                flex-direction: row;
-                margin-bottom: 0.3rem;
-            }
-            .menu-drink-section-mobile {
-                background: #ffffffcc;
-                border-radius: 15px;
-                flex: 1 1 0;
-                padding: 1.05rem 0.7rem 1.1rem 0.7rem;
-                box-shadow: 0 8px 20px rgba(123,154,109,0.07);
-                border: 2px solid #7b9a6d11;
-                display: flex;
-                flex-direction: column;
-                gap: 0.7rem;
-                min-width: 0;
-            }
-            .menu-drink-section-mobile h3 {
-                color: #7B9A6D;
-                font-size: 1.08rem;
-                font-weight: 700;
-                margin-bottom: 0.6rem;
-                text-align: center;
-            }
-            .menu-drink {
-                margin-bottom: 0.25rem;
-            }
-            .menu-drink .name {
-                font-weight: 600;
-                color: #E8B55A;
-                font-size: 1.01rem;
+            .hero-image img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* Crop to circle, hide black outer square if any */
+                border-radius: 50%;
                 display: block;
-                margin-bottom: 0.06rem;
             }
-            .menu-drink .desc {
-                color: #666;
-                font-size: 0.90rem;
-                margin-left: 0.12rem;
-                line-height: 1.45;
+            .hero {
+                padding: 2.1rem 0.9rem 2.1rem 0.9rem;
+                border-radius: 14px;
+                margin: 1.2rem 0.25rem;
             }
-            .menu-toppings-row-mobile {
-                display: flex;
-                width: 97vw;
-                max-width: 400px;
-                margin-top: 0.2rem;
+            .hero h1 {
+                font-size: 1.35rem;
+                margin-bottom: 0.7rem;
             }
-            .menu-toppings-section-mobile {
-                flex: 1 1 0;
-                background: #fffbe8;
-                border-radius: 15px;
-                padding: 1.05rem 0.7rem 1.1rem 0.7rem;
-                box-shadow: 0 4px 14px rgba(232,181,90,0.09);
-                border: 2px solid #e8b55a1a;
-                display: flex;
-                flex-direction: column;
-                gap: 0.55rem;
+            .hero p {
+                font-size: 1rem;
+                padding: 0 0.5rem;
+                margin-bottom: 1.1rem;
             }
-            .menu-toppings-section-mobile h3 {
-                color: #E8B55A;
-                font-size: 1.03rem;
-                font-weight: 700;
-                margin-bottom: 0.55rem;
-                text-align: center;
-                letter-spacing: 0.03em;
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.8rem 1.2rem;
+                margin-top: 1rem;
             }
-            .menu-topping .name {
-                color: #7B9A6D;
-                font-weight: 600;
-                font-size: 0.98rem;
-                display: block;
-                margin-bottom: 0.06rem;
-            }
-            .menu-topping .desc {
-                color: #666;
-                font-size: 0.87rem;
-                margin-left: 0.11rem;
-                line-height: 1.42;
-            }
-        }
-
-        /* --- ABOUT US Mobile --- */
-        @media (max-width: 900px) {
+            /* About section - improved spacing */
             .about-content {
                 display: flex;
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
                 gap: 1.2rem;
-                padding: 1.2rem 1rem 1.4rem 1rem;
-                margin: 1.2rem 0.25rem;
+                padding: 1.6rem 1.2rem 1.7rem 1.2rem;
+                margin: 1.2rem 0.35rem;
                 border-radius: 16px;
                 background: #fff;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.09);
-                width: 100%;
-                max-width: 500px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             }
             .about-text {
-                max-width: 100%;
+                width: 100%;
+                max-width: 430px;
                 margin: 0 auto;
                 text-align: center;
-                background: #f6faf7;
-                border-radius: 13px;
-                padding: 1.2rem 0.8rem 1.2rem 0.8rem;
-                box-shadow: 0 1px 5px rgba(123,154,109,0.04);
             }
             .about-text h2 {
-                font-size: 1.2rem;
+                font-size: 1.25rem;
                 margin-bottom: 0.6rem;
-                color: #7B9A6D;
-                font-weight: 700;
             }
             .about-text p {
-                font-size: 1.02rem;
-                margin-bottom: 1.1rem;
+                font-size: 0.99rem;
+                margin-bottom: 1.05rem;
                 line-height: 1.7;
-                padding: 0 0.1rem;
+                padding: 0 0.15rem;
             }
             .about-icon {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 width: 100%;
-                max-width: 310px;
-                height: 200px;
-                border-radius: 16px;
+                max-width: 260px;
+                height: 320px;
+                border-radius: 14px;
                 overflow: hidden;
-                background: #f8f8f8;
+                background: #fafafa;
                 margin: 0 auto;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }
             .about-icon img {
                 width: 100%;
@@ -321,74 +241,33 @@
                 object-fit: cover;
                 display: block;
             }
-        }
-
-        /* --- CONTACT Mobile --- */
-        @media (max-width: 900px) {
+            /* Contact section - better padding, info not hugging walls */
             .contact-content {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 1.2rem;
-                padding: 1.5rem 1.2rem 1.5rem 1.2rem;
+                gap: 1.35rem;
+                padding: 1.45rem 1rem 1.5rem 1rem;
                 margin: 1.2rem 0.3rem;
                 border-radius: 16px;
                 background: #fff;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-                width: 100%;
-                max-width: 500px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.07);
             }
             .contact-info {
                 width: 100%;
-                max-width: 430px;
+                max-width: 440px;
                 margin: 0 auto;
-                padding: 0 0.1rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1.1rem;
+                padding: 0 0.2rem;
             }
             .contact-info h2 {
                 font-size: 1.2rem;
                 margin-bottom: 0.7rem;
                 text-align: center;
             }
-            .contact-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 1.05rem;
-                width: 100%;
-            }
             .contact-item {
-                background: rgba(123,154,109,0.08);
+                margin-bottom: 1.15rem;
+                padding: 0.8rem 0.7rem;
                 border-radius: 14px;
-                padding: 1.1rem 1.1rem 1.1rem 1.1rem;
-                box-shadow: 0 1px 6px rgba(123,154,109,0.07);
-                display: flex;
-                align-items: flex-start;
-                gap: 1.2rem;
-            }
-            .contact-item .icon {
-                font-size: 1.4rem;
-                color: #E8B55A;
-                margin-right: 0.5rem;
-                width: 35px;
-                text-align: center;
-            }
-            .contact-item div {
-                flex: 1;
-            }
-            .contact-item h3 {
-                color: #7B9A6D;
-                font-weight: 600;
-                margin-bottom: 0.38rem;
-                font-size: 1.03rem;
-            }
-            .contact-item p, .contact-item a {
-                color: #666;
-                font-size: 0.98rem;
-                margin-bottom: 0;
-                text-decoration: none;
-                word-break: break-all;
             }
             .contact-visual {
                 display: flex !important;
@@ -396,12 +275,10 @@
                 align-items: center !important;
                 width: 100%;
                 max-width: 260px;
-                height: 180px;
+                height: 280px;
                 border-radius: 14px;
                 overflow: hidden;
                 background: #fafafa;
-                margin: 0 auto;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             }
             .contact-visual img {
                 width: 100%;
@@ -409,9 +286,43 @@
                 object-fit: cover;
                 display: block;
             }
+            /* Events section - images and card layout */
+            .event-grid {
+                gap: 1.1rem;
+                padding: 1.2rem 0.2rem;
+            }
+            .event-card {
+                padding: 1.1rem 0.6rem;
+                border-radius: 14px;
+            }
+            .event-card h3 {
+                font-size: 1.1rem;
+                margin-bottom: 0.6rem;
+            }
+            .event-card .price {
+                font-size: 0.98rem;
+                margin-bottom: 0.5rem;
+            }
+            .event-card p {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0.3rem 0;
+            }
+            .event-card img {
+                width: 100%;
+                max-width: 260px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 12px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                background: #f0f0f0;
+            }
         }
+        /* --- End mobile centering/layout --- */
 
-        /* (Desktop and rest remains unchanged) */
         main { margin-top: 80px; min-height: calc(100vh - 80px); position: relative; }
         .tab-content {
             display: none;
@@ -486,7 +397,7 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(123,154,109,0.4);
         }
-        /* About Section (Desktop) */
+        /* About Section */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -501,119 +412,7 @@
         .about-text h2 { font-size: 2.5rem; color: #7B9A6D; margin-bottom: 1.5rem; font-weight: 700;}
         .about-text p { font-size: 1.1rem; line-height: 1.8; color: #666; margin-bottom: 1.5rem; }
         .about-icon { font-size: 15rem; color: #7B9A6D; text-align: center; animation: pulse 10s infinite;}
-        /* Menu Section - Desktop */
-        .menu-section-container {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-        .menu-pricing-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            background: linear-gradient(90deg, #fff, #e8b55a1a 75%);
-            border-radius: 18px;
-            padding: 2rem 1.5rem;
-            box-shadow: 0 8px 25px rgba(123,154,109,0.09);
-            border: 2px solid #e8b55a44;
-        }
-        .menu-price-col {
-            background: #fff5e0;
-            border-radius: 12px;
-            padding: 1.2rem 2rem;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(123,154,109,0.08);
-            min-width: 140px;
-        }
-        .menu-price-col h4 {
-            font-size: 1.3rem;
-            color: #7B9A6D;
-            font-weight: 600;
-        }
-        .menu-price-col span {
-            display: block;
-            font-size: 2rem;
-            color: #E8B55A;
-            font-weight: 800;
-            margin-top: 0.2rem;
-            margin-bottom: 0.2rem;
-        }
-        .menu-drink-row {
-            display: flex;
-            gap: 2rem;
-            justify-content: space-between;
-        }
-        .menu-drink-section {
-            flex: 1 1 0;
-            background: #ffffffcc;
-            border-radius: 18px;
-            padding: 1.5rem 1.2rem;
-            box-shadow: 0 8px 25px rgba(123,154,109,0.07);
-            border: 2px solid #7b9a6d11;
-            display: flex;
-            flex-direction: column;
-            gap: 1.1rem;
-        }
-        .menu-drink-section h3 {
-            color: #7B9A6D;
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .menu-drink {
-            margin-bottom: 0.6rem;
-        }
-        .menu-drink .name {
-            font-weight: 600;
-            color: #E8B55A;
-            font-size: 1.08rem;
-        }
-        .menu-drink .desc {
-            color: #666;
-            font-size: 0.98rem;
-            margin-left: 0.4rem;
-        }
-        .menu-toppings-row {
-            margin-top: 1.2rem;
-            display: flex;
-            justify-content: center;
-        }
-        .menu-toppings-section {
-            flex: 1 1 0;
-            background: #fffbe8;
-            border-radius: 16px;
-            padding: 1.3rem 1.1rem;
-            box-shadow: 0 4px 18px rgba(232,181,90,0.09);
-            border: 2px solid #e8b55a1a;
-            display: flex;
-            flex-direction: column;
-            gap: 0.9rem;
-            min-width: 320px;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        .menu-toppings-section h3 {
-            color: #E8B55A;
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.6rem;
-            letter-spacing: 0.03em;
-        }
-        .menu-topping {
-            margin-bottom: 0.2rem;
-        }
-        .menu-topping .name {
-            color: #7B9A6D;
-            font-weight: 600;
-            font-size: 1.03rem;
-        }
-        .menu-topping .desc {
-            color: #666;
-            font-size: 0.93rem;
-            margin-left: 0.35rem;
-        }
-        /* Contact Section - Desktop */
+        /* Contact Section */
         .contact-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -682,6 +481,7 @@
         .event-card h3 { font-size: 1.5rem; color: #7B9A6D; margin-bottom: 1rem; font-weight: 600;}
         .event-card .price { font-size: 1.2rem; color: #E8B55A; font-weight: 700; margin-bottom: 1rem;}
         .event-card p { color: #666; line-height: 1.6;}
+        /* Animations */
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px);}
             to { opacity: 1; transform: translateY(0);}
@@ -735,7 +535,7 @@
         </nav>
     </header>
     <main>
-        <!-- Home Tab (unchanged) -->
+        <!-- Home Tab -->
         <section id="home" class="tab-content active">
             <div class="hero">
                 <div class="hero-image">
@@ -746,30 +546,34 @@
                 <a href="#" class="cta-button" onclick="switchTab('menu')" tabindex="0">Explore Our Menu</a>
             </div>
         </section>
-        <!-- About Tab: text box, then image box (mobile) -->
+        <!-- About Tab -->
         <section id="about" class="tab-content">
             <div class="about-content">
                 <div class="about-text">
                     <h2>Our Story</h2>
                     <p>At Tai Leaf Bubble Tea, we believe that every cup should be a moment of joy and connection. Founded with a passion for authentic flavors and sustainable practices, we source our ingredients from local farms and craft each drink with care.</p>
-                    <p>Our cozy atmosphere invites you to slow down, savor the moment, and enjoy the perfect balance of traditional tea culture with modern bubble tea innovation. From our signature house blends to seasonal specialties, every sip is crafted to bring comfort and delight to your day.</p>
+                    <p>Our cozy atmosphere invites you to slow down, savor the moment, and enjoy the perfect balance of traditional tea culture with modern bbubble tea innovation. From our signature house blends to seasonal specialties, every sip is crafted to bring comfort and delight to your day.</p>
                 </div>
                 <div class="about-icon"><img src="aboutus.jpg" alt="Tai Leaf Bubble Tea" width="625px" height="750px"></div>
             </div>
         </section>
-        <!-- Menu Tab - Reformat for mobile -->
+        <!-- Menu Tab -->
         <section id="menu" class="tab-content">
             <div class="menu-section-container">
-                <!-- Big price box -->
-                <div class="menu-price-mainbox">
-                    <div class="menu-price-label">Large Bubble Tea</div>
-                    <div class="menu-price-value">$4.00</div>
-                    <div class="menu-price-label" style="margin-left:24px;">Small Bubble Tea</div>
-                    <div class="menu-price-value">$3.00</div>
+                <div class="menu-pricing-box">
+                    <div class="menu-price-col">
+                        <h4>Large Bubble Tea</h4>
+                        <span>$4.00</span>
+                        <div style="color:#7B9A6D; font-size:0.98rem;">16 oz, your choice of drink & topping</div>
+                    </div>
+                    <div class="menu-price-col">
+                        <h4>Small Bubble Tea</h4>
+                        <span>$3.00</span>
+                        <div style="color:#7B9A6D; font-size:0.98rem;">12 oz, your choice of drink & topping</div>
+                    </div>
                 </div>
-                <!-- Drink sections -->
-                <div class="menu-drink-sections-mobile">
-                    <div class="menu-drink-section-mobile">
+                <div class="menu-drink-row">
+                    <div class="menu-drink-section">
                         <h3>Milk Teas</h3>
                         <div class="menu-drink">
                             <span class="name">Brown Sugar Milk Tea</span>
@@ -792,7 +596,7 @@
                             <span class="desc">Creamy milk tea blended with the sweetness of fresh strawberries for a refreshing fruity sip.</span>
                         </div>
                     </div>
-                    <div class="menu-drink-section-mobile">
+                    <div class="menu-drink-section">
                         <h3>Fruit Teas</h3>
                         <div class="menu-drink">
                             <span class="name">Mango Fruit Tea</span>
@@ -812,9 +616,8 @@
                         </div>
                     </div>
                 </div>
-                <!-- Toppings -->
-                <div class="menu-toppings-row-mobile">
-                    <div class="menu-toppings-section-mobile">
+                <div class="menu-toppings-row">
+                    <div class="menu-toppings-section">
                         <h3>Toppings</h3>
                         <div class="menu-topping">
                             <span class="name">Brown Sugar Tapioca Pearls</span>
@@ -832,50 +635,48 @@
                 </div>
             </div>
         </section>
-        <!-- Contact Tab - mobile 4 boxes, desktop original -->
+        <!-- Contact Tab -->
         <section id="contact" class="tab-content">
             <div class="contact-content">
                 <div class="contact-info">
                     <h2>Get in Touch</h2>
-                    <div class="contact-grid">
-                        <div class="contact-item">
-                            <div class="icon">📧</div>
-                            <div>
-                                <h3>Email</h3>
-                                <p>hello@taileafboba.com</p>
-                            </div>
+                    <div class="contact-item">
+                        <div class="icon">📧</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>hello@taileafboba.com</p>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">📞</div>
-                            <div>
-                                <h3>Phone</h3>
-                                <p>(555) 123-BOBA</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">📞</div>
+                        <div>
+                            <h3>Phone</h3>
+                            <p>(555) 123-BOBA</p>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">🕒</div>
-                            <div>
-                                <h3>Future Events</h3>
-                                <p>TBD!</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">🕒</div>
+                        <div>
+                            <h3>Future Events</h3>
+                            <p>TBD!</p>
                         </div>
-                        <div class="contact-item">
-                            <div class="icon">
-                                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" width="23" height="23" style="vertical-align:middle;filter:invert(48%) sepia(79%) saturate(553%) hue-rotate(30deg) brightness(90%) contrast(90%);margin-top:-3px;">
-                            </div>
-                            <div>
-                                <h3>Instagram</h3>
-                                <p>
-                                    <a href="https://instagram.com/taileaf.bubbletea" target="_blank" style="color:#E8B55A; text-decoration:underline;">@taileaf.bubbletea</a>
-                                </p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="icon">
+                            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" width="23" height="23" style="vertical-align:middle;filter:invert(48%) sepia(79%) saturate(553%) hue-rotate(30deg) brightness(90%) contrast(90%);margin-top:-3px;">
+                        </div>
+                        <div>
+                            <h3>Instagram</h3>
+                            <p>
+                                <a href="https://instagram.com/taileaf.bubbletea" target="_blank" style="color:#E8B55A; text-decoration:underline;">@taileaf.bubbletea</a>
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div class="contact-visual"><img src="contactus.jpg" width="550px" height="600px" ></div>
             </div>
         </section>
-        <!-- Events Tab (unchanged) -->
+        <!-- Events Tab -->
         <section id="events" class="tab-content">
             <div class="event-grid">
                 <div class="event-card">
@@ -934,8 +735,11 @@
             // If nav open on mobile, close it
             if(window.innerWidth<900) {
                 document.querySelector('.nav-links').classList.remove('mobile-active');
+                document.querySelector('.mobile-nav-toggle').classList.remove('active');
             }
         }
+
+        // Navigation click handlers and improved mobile touch
         document.addEventListener('DOMContentLoaded', function() {
             // Nav tab buttons
             const navLinks = document.querySelectorAll('.nav-link');
@@ -946,22 +750,27 @@
                     switchTab(tabName);
                 });
                 link.addEventListener('touchstart', function(e) {
+                    // For better mobile tap feedback, add a pressed class (optional)
                     this.classList.add('active');
                 });
                 link.addEventListener('touchend', function(e) {
                     this.classList.remove('active');
                 });
             });
+            // Mobile nav toggle
             const navToggle = document.querySelector('.mobile-nav-toggle');
             navToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
                 document.querySelector('.nav-links').classList.toggle('mobile-active');
             });
             navToggle.addEventListener('keydown', function(e){
-                if(e.key === "Enter" || e.key === " "){
+                if(e.key === "Enter" || e.key === " "){ // space/enter support
                     e.preventDefault();
+                    this.classList.toggle('active');
                     document.querySelector('.nav-links').classList.toggle('mobile-active');
                 }
             });
+            // Add scroll effect to header
             window.addEventListener('scroll', function() {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
@@ -972,6 +781,7 @@
                     header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
                 }
             });
+            // Intersection observer for animations
             const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
             const observer = new IntersectionObserver(function(entries) {
                 entries.forEach(entry => {
@@ -981,6 +791,7 @@
                     }
                 });
             }, observerOptions);
+            // Animate menu cards & contact items
             const animatedElements = document.querySelectorAll('.menu-card, .contact-item');
             animatedElements.forEach(el => {
                 el.style.opacity = '0';
